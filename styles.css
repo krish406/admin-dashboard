@@ -20,9 +20,33 @@
     grid-row: 1/2;
     grid-column: 2/3;
     background-color: gold;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 }
 
 .sidebar{
     grid-area: sidebar;
     background-color: rgb(101, 174, 222);
+}
+
+.search{
+    grid-row: 1/2;
+    background-color: brown;
+}
+
+.options{
+    grid-row: 2/3;
+    background-color: pink;
+}
+
+.body{
+    grid-row:2/3;
+    grid-column: 2/3;
+    background-color: aquamarine;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.announce{
+    background-color: blueviolet;
 }
