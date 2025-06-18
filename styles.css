@@ -14,8 +14,9 @@
 .wrapper{
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr minmax(50px, 0.5fr) 4fr;
     grid-template-areas: "sidebar options"
+                         "sidebar body"
                          "sidebar body";
     width: 100vw;
     height: 100vh;
@@ -24,21 +25,21 @@
 .head{
     grid-row: 1/2;
     grid-column: 2/3;
-    background-color: rgb(192, 237, 163);
+    background-color: rgb(21, 21, 21);
     display: grid;
     grid-template-rows: 1fr 1fr;
 }
 
 .sidebar{
     grid-area: sidebar;
-    background-color: rgb(187, 255, 195);
+    background-color: rgb(44, 44, 44);
     display: grid;
     grid-template-rows: repeat(10, 1fr);
-    justify-content: center;
+    grid-row: 1/4;
 }
 
 .dash, .sidebar ul li{
-    color: rgb(72, 134, 25);
+    color: rgb(255, 255, 255);
     font-size: larger;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -49,6 +50,7 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    margin-left: 30px;
 }
 
 .sidebar ul {
@@ -86,16 +88,64 @@
     grid-template-columns: 60% 40%;
 }
 
-.body{
-    grid-row:2/3;
-    grid-column: 2/3;
-    background-color: rgb(70, 161, 52);
+.body-head{
+    grid-row: 2/3;
+    background-color: rgb(202, 230, 230);
     display: grid;
     grid-template-columns: 2fr 1fr;
 }
 
-.announce{
-    background-color: rgb(120, 206, 120);
+.body-head p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    align-self: center;
+    color: white;
+}
+
+.trend-title p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: x-large;
+}
+
+.proj{
+    background-color: rgb(111, 129, 133);
+    align-self: stretch;
+    display: flex;
+    align-items: flex-end;
+}
+
+.proj-p{
+    margin-left: 10px;
+}
+
+.body{
+    grid-row:3/4;
+    grid-column: 2/3;
+    background-color: rgb(111, 129, 133);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.body-left{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+}
+
+.announce, .ann{
+    background-color: rgb(136, 154, 162);
+}
+
+.ann{
+    display: flex;
+    align-items: flex-end;
+}
+
+.ann-p{
+    margin-left: 10px;
 }
 
 .full-bar{
@@ -110,7 +160,7 @@
     width: 70%;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    height: 50%;
+    height: 30%;
 }
 
 .full-bar img{
@@ -122,13 +172,14 @@
     align-self: center;
     justify-self: center;
     font-size: 1.25rem;
-    color: rgb(78, 129, 38);
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.profile img, .full-bar img, .dash img, .sidebar img{
+
+.profile img, .full-bar img, .dash img, .sidebar img, .greet img{
     width: 25px;
     height: 25px;
     filter: invert(88%) sepia(9%) saturate(247%) hue-rotate(86deg) brightness(118%) contrast(119%);
@@ -137,15 +188,106 @@
 .dash img {
     width: calc(1.5 * var(--img-width));
     height: calc(1.5 * var(--img-width));
-    filter: none;
-}
-
-.profile img:nth-child(2){
-    filter: none
 }
 
 .sidebar ul div, .sidebar-bottom ul div{
     display: flex;
     flex-direction: row;
+    gap: 10px;
+}
+
+.greet{
+    align-self: center;
+    margin-left: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: white;
+}
+
+.greet p:nth-child(2){
+    font-size: x-large;
+}
+
+.greet img {
+    width: 50px;
+    height: 50px;
+    align-self: center;
+}
+
+.file-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.file-buttons > button{
+    background-color: rgb(48, 155, 255);
+    color: white;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-style:none;
+    border-radius: 15px;
+}
+
+.card{
+    display: flex;
+    background-color: rgb(224, 218, 209);
+    border-style: solid;
+    border-color: rgb(158, 126, 94);
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    max-width: 500px;
+    max-height: 155px;
+    overflow: hidden;
+}
+
+.ann-p{
+    margin-left: 10px;
+}
+
+.announce{
+    display: grid;
+    grid-template-rows: 1fr 0.25fr 1fr;
+    padding: 10px;
+}
+
+.announce .feed{
+    display: grid;
+    background-color: rgb(222, 222, 222);
+    padding: 10px;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+
+.announce .feed div:not(:first-child), .trend div:not(:first-child){
+    border-top: 3px solid rgb(166, 139, 124);
+}
+
+.announce .feed div, .trend div {
+    padding-top: 10px;
+}
+
+.trend{
+    background-color: white;
+}
+
+.trend-title{
+    display: flex;
+    align-items: flex-end;
+}
+
+.announce .trend{
+    margin-top: 10px;
+    display: grid;
+    background-color: rgb(222, 222, 222);
+    padding: 10px;
+    grid-template-rows: 1fr 1fr;
     gap: 10px;
 }
